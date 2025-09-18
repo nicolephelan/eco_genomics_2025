@@ -32,10 +32,24 @@ This will keep my notes on population genomics coding sessions.
 
 ### 09/16/2025: Mapping cleaned red spruce reads to the reference genome
 
-Copy the bash scripts (bam_stats.sh, mapping.sh, and process_bam.sh) and text file (SBATCH_header.txt) from
+-   I copied the bash scripts (bam_stats.sh, mapping.sh, and process_bam.sh) and text file (SBATCH_header.txt) from
 
 `/gpfs1/cl/ecogen/pbio6800/PopulationGenomics/scripts`
 
 to
 
 `/~/projects/eco_genomics_2025/population_genomics/myscripts`
+
+-   I mapped my clean reads to the black spruce reference genome using bwa-mem2.
+
+-   After mapping, I processed the sequence alignment (.sam)
+
+    -   The outputs are saved in `population_genomics/myresults/`
+
+### 09/18/2025: Review bamstats and set up nucleotide diversity estimation using ANGSD
+
+-   I wrote a short scripts called bamstats_review.R located in `myscripts` to evaluate the mapping success.
+
+    -   I saw that roughly 66% of reads mapped in proper pairs
+    
+    -   I obtained a depth of coverage between 2–3 X which suggests that I need to use a probabilistic framework for analyzing the genotype data
