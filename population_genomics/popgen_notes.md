@@ -67,3 +67,13 @@ to
     -   The second script ANGSD_doTheta.sh was written to esimate nucleotide diversity (aka theta) using the sliding window approach. For this script, the window of 5000 was selected with no overlap.
 
     -   The wrapper script was run using sbatch, and the outputs are stored in `myresults/ANGSD/diversity`.
+
+### 09/23/2025: Assessing Nucleotide Diversity
+
+-   Trouble-shooting: I ran the cut command on the ANGSD_doTheta.sh file by editing the line to include the window and step commands.
+
+-   I created an R Markdown file called Nucleotide_Diversity.Rmd for assessing the Pi and Watterson's theta values.
+
+    -   Diversity is not concentrated in one distinct peak across the chromosome scaffold.
+
+    -   Pi is larger than Theta W which means there are higher values of D and this might indicate a demographic effect.

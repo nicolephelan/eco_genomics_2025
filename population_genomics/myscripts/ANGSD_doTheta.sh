@@ -54,4 +54,11 @@ thetaStat do_stat ${INPUT}/${MYPOP}_${SUFFIX}.thetas.idx \
 
 ### Cut out the relevant columns for downstream input to R:
 
-cut -f2-5,9,14 ${OUT}/${MYPOP}_${SUFFIX}.thetasWindow.gz.pestPG > ${OUT}/${MYPOP}_${SUFFIX}_win${WIN}_step${STEP}.thetas
+REPO="/users/n/m/nmphelan/projects/eco_genomics_2025/population_genomics"
+OUT="${REPO}/myresults/ANGSD/diversity"
+MYPOP="2020"
+SUFFIX="ALL"   # All sites (=ALL) or just polymorphic sites (=POLY)?
+WIN=50000
+STEP=50000
+
+cut -f2-5,9,14 ${OUT}/${MYPOP}_${SUFFIX}_win${WIN}_step${STEP}.thetasWindow.gz.pestPG > ${OUT}/${MYPOP}_${SUFFIX}_win${WIN}_step${STEP}.thetas
