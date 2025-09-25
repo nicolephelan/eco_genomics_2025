@@ -68,7 +68,7 @@ to
 
     -   The wrapper script was run using sbatch, and the outputs are stored in `myresults/ANGSD/diversity`.
 
-### 09/23/2025: Assessing Nucleotide Diversity
+### 09/23/2025: Assessing nucleotide diversity
 
 -   Trouble-shooting: I ran the cut command on the ANGSD_doTheta.sh file by editing the line to include the window and step commands.
 
@@ -77,3 +77,13 @@ to
     -   Diversity is not concentrated in one distinct peak across the chromosome scaffold.
 
     -   Pi is larger than Theta W which means there are higher values of D and this might indicate a demographic effect.
+
+-   I also added my results to the class
+
+### 09/25/2025: Estimating Fst with black spruce data set
+
+-   R Markdown: I knitted the Nucleotide_Diversity.Rmd files to create the html file.
+-   I created a new script called ANGSD_Fst.sh and I copied in the bash script with edits to tailor it to my population. It is saved to the `myscripts` folder.
+    -   This script will calculate the Fst between my population (2020) of red spruce and the Wisconsin black spruce population.
+    -   I also included the optional sliding window command in the script.
+-   I created a new script called PCAngsd_RSBS.sh that will make a PCA and admixture analysis using PCAngsd.
