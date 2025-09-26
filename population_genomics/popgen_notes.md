@@ -83,7 +83,23 @@ to
 ### 09/25/2025: Estimating Fst with black spruce data set
 
 -   R Markdown: I knitted the Nucleotide_Diversity.Rmd files to create the html file.
+
 -   I created a new script called ANGSD_Fst.sh and I copied in the bash script with edits to tailor it to my population. It is saved to the `myscripts` folder.
+
     -   This script will calculate the Fst between my population (2020) of red spruce and the Wisconsin black spruce population.
+    
     -   I also included the optional sliding window command in the script.
--   I created a new script called PCAngsd_RSBS.sh that will make a PCA and admixture analysis using PCAngsd.
+    
+    -   I added my Fst value to the class spreadsheet, and I noticed that my population had a higher Fst value indicative of less introgression in my population.
+    
+    -   This Fst value makes sense for my population because it occurs further in the south.
+    
+-   I created a new script called PCAngsd_RSBS.sh that will make a PCA and admixture analysis using PCAngsd. This script is also saved to the `myscripts` folder.
+
+    -   I created an R markdown file called PCA_Admixture.Rmd in `mydocs` to create a visual PCA and Admixture plot.
+    
+    -   As expected by the high Fst value, there was very little amounts of black spruce admixed into my population.
+    
+    -   In the PCA, my population was also further separated from the northern admixed populations on PC2.
+    
+    -   Generally, admixture with black spruce seemed to increase with lattitude (with the exception of Pop 2021).
