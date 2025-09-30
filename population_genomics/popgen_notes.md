@@ -78,7 +78,7 @@ to
 
     -   Pi is larger than Theta W which means there are higher values of D and this might indicate a demographic effect.
 
--   I also added my results to the class
+-   I also added my results to the class spreadsheet.
 
 ### 09/25/2025: Estimating Fst with black spruce data set
 
@@ -87,19 +87,32 @@ to
 -   I created a new script called ANGSD_Fst.sh and I copied in the bash script with edits to tailor it to my population. It is saved to the `myscripts` folder.
 
     -   This script will calculate the Fst between my population (2020) of red spruce and the Wisconsin black spruce population.
-    
+
     -   I also included the optional sliding window command in the script.
-    
+
     -   I added my Fst value to the class spreadsheet, and I noticed that my population had a higher Fst value indicative of less introgression in my population.
-    
+
     -   This Fst value makes sense for my population because it occurs further in the south.
-    
+
 -   I created a new script called PCAngsd_RSBS.sh that will make a PCA and admixture analysis using PCAngsd. This script is also saved to the `myscripts` folder.
 
     -   I created an R markdown file called PCA_Admixture.Rmd in `mydocs` to create a visual PCA and Admixture plot.
-    
+
     -   As expected by the high Fst value, there was very little amounts of black spruce admixed into my population.
-    
-    -   In the PCA, my population was also further separated from the northern admixed populations on PC2.
-    
-    -   Generally, admixture with black spruce seemed to increase with lattitude (with the exception of Pop 2021).
+
+    -   I created a PCA with 95 red spruce samples and 18 black spruce samples (N=113 total).
+
+    -   I used a beagle file in the class data share wit the genotype likelihoods already computed: ``` /gpfs1/cl/ecogen/pbio6800/PopulationGenomics/ANGSD/``RSBS_poly.beagle.gz ```
+
+    -   In the PCA, Population 2020 was also further separated from the northern admixed populations on PC2.
+
+    -   Generally, admixture with black spruce seemed to increase with latitude (with the exception of Population 2021).
+
+# 09/30/2025:
+
+-   I modified the PCAngsd_RSBS.sh script to change the K value from 2 to 3. I also updated the PCA_Admixture.Rmd file and knitted a new html.
+    -   There is slightly more variance explained by PC2 compared to when K=2.
+-   I created a new script using the PCAngsd_RSBS.sh as the template and I saved it as PCAngsd_allRS_selection.sh in the /myscripts folder.
+    -   In this file, I added in the scripts for selection, kept K=3 and removed the black spruce data set.
+-   I created a new R markdown file in /mydocs called RedSpruce_Selection.Rmd to analyze the PCA of the new output that does not include the black spruce.
+    -   After making the scree plot, I noticed that the variance explained in PC1 was much lower compared to the PCA with black spruce.

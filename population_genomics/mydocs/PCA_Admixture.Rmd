@@ -20,7 +20,7 @@ library(ggpubr)
 Estimate the PCA
 
 ```{r}
-COV <- as.matrix(read.table("RSBS_poly_K2.cov"))
+COV <- as.matrix(read.table("RSBS_poly_K3.cov"))
 
 PCA <- eigen(COV)
 ```
@@ -71,7 +71,7 @@ ggscatter(data, x = "V1", y = "V2",
 Admixture analysis: reading in the data
 
 ```{r}
-q <- read.table("RSBS_poly_K2.admix.2.Q", sep=" ", header=F)
+q <- read.table("RSBS_poly_K3.admix.3.Q", sep=" ", header=F)
 
 K=dim(q)[2] #Find the level of K modeled
 
