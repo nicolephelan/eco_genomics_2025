@@ -1,0 +1,20 @@
+PCAngsd v1.36.1
+Time: 05/10/2025 15:39:40
+Directory: /gpfs1/home/n/m/nmphelan/projects/eco_genomics_2025/population_genomics/myscripts
+Options:
+	--beagle /gpfs1/cl/ecogen/pbio6800/PopulationGenomics/ANGSD/allRS_poly.beagle.gz
+	--eig 3
+	--threads 10
+	--out /users/n/m/nmphelan/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1/allRS_poly_K4
+	--admix
+	--admix_K 4
+
+Loaded 687863 sites and 95 samples.
+Number of sites after MAF filtering (0.05): 542303
+
+PCAngsd did not converge using 3 eigenvectors!
+Saved covariance matrix as /users/n/m/nmphelan/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1/allRS_poly_K4.cov
+Saved admixture proportions as /users/n/m/nmphelan/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1/allRS_poly_K4.admix.4.Q
+Saved ancestral allele frequencies proportions as /users/n/m/nmphelan/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1/allRS_poly_K4.admix.4.P
+
+Total elapsed time: 3m47s

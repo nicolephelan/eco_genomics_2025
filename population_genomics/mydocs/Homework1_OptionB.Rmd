@@ -1,0 +1,28 @@
+---
+title: "Homework1_OptionB"
+author: "Nicole Phelan"
+date: "2025-10-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir="~/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1")
+```
+
+Load libraries for plotting
+
+```{r}
+library(ggplot2)
+library(ggpubr)
+```
+
+Estimate the PCA
+
+```{r}
+COV <- as.matrix(read.table("allRS_poly_K2.cov"))
+
+PCA <- eigen(COV)
+
+PCA
+```

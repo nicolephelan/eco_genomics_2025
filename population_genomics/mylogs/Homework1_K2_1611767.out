@@ -1,0 +1,158 @@
+mkdir: cannot create directory ‘/users/n/m/nmphelan/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1’: File exists
+------------------------------------
+PCAngsd v1.36.1
+Jonas Meisner and Anders Albrechtsen
+Using 10 thread(s)
+------------------------------------
+
+Parsing Beagle file.
+Loaded 687863 sites and 95 samples.
+Estimating minor allele frequencies.
+EM (MAF) converged at iteration: 7
+Number of sites after MAF filtering (0.05): 542303
+
+Estimating covariance matrix.
+Using 1 principal components (manually selected).
+Individual allele frequencies estimated (1).
+Individual allele frequencies estimated (2).	RMSE=0.0029519
+Individual allele frequencies estimated (3).	RMSE=0.0018718
+Individual allele frequencies estimated (4).	RMSE=0.0012512
+Individual allele frequencies estimated (5).	RMSE=0.0008579
+Individual allele frequencies estimated (6).	RMSE=0.0005940
+Individual allele frequencies estimated (7).	RMSE=0.0004199
+Individual allele frequencies estimated (8).	RMSE=0.0003026
+Individual allele frequencies estimated (9).	RMSE=0.0002242
+Individual allele frequencies estimated (10).	RMSE=0.0001719
+Individual allele frequencies estimated (11).	RMSE=0.0001373
+Individual allele frequencies estimated (12).	RMSE=0.0001150
+Individual allele frequencies estimated (13).	RMSE=0.0001002
+Individual allele frequencies estimated (14).	RMSE=0.0000905
+Individual allele frequencies estimated (15).	RMSE=0.0000846
+Individual allele frequencies estimated (16).	RMSE=0.0000802
+Individual allele frequencies estimated (17).	RMSE=0.0000771
+Individual allele frequencies estimated (18).	RMSE=0.0000747
+Individual allele frequencies estimated (19).	RMSE=0.0000730
+Individual allele frequencies estimated (20).	RMSE=0.0000714
+Individual allele frequencies estimated (21).	RMSE=0.0000701
+Individual allele frequencies estimated (22).	RMSE=0.0000688
+Individual allele frequencies estimated (23).	RMSE=0.0000677
+Individual allele frequencies estimated (24).	RMSE=0.0000666
+Individual allele frequencies estimated (25).	RMSE=0.0000656
+Individual allele frequencies estimated (26).	RMSE=0.0000646
+Individual allele frequencies estimated (27).	RMSE=0.0000636
+Individual allele frequencies estimated (28).	RMSE=0.0000626
+Individual allele frequencies estimated (29).	RMSE=0.0000617
+Individual allele frequencies estimated (30).	RMSE=0.0000608
+Individual allele frequencies estimated (31).	RMSE=0.0000599
+Individual allele frequencies estimated (32).	RMSE=0.0000590
+Individual allele frequencies estimated (33).	RMSE=0.0000581
+Individual allele frequencies estimated (34).	RMSE=0.0000573
+Individual allele frequencies estimated (35).	RMSE=0.0000564
+Individual allele frequencies estimated (36).	RMSE=0.0000556
+Individual allele frequencies estimated (37).	RMSE=0.0000548
+Individual allele frequencies estimated (38).	RMSE=0.0000540
+Individual allele frequencies estimated (39).	RMSE=0.0000532
+Individual allele frequencies estimated (40).	RMSE=0.0000524
+Individual allele frequencies estimated (41).	RMSE=0.0000516
+Individual allele frequencies estimated (42).	RMSE=0.0000509
+Individual allele frequencies estimated (43).	RMSE=0.0000501
+Individual allele frequencies estimated (44).	RMSE=0.0000494
+Individual allele frequencies estimated (45).	RMSE=0.0000487
+Individual allele frequencies estimated (46).	RMSE=0.0000480
+Individual allele frequencies estimated (47).	RMSE=0.0000472
+Individual allele frequencies estimated (48).	RMSE=0.0000465
+Individual allele frequencies estimated (49).	RMSE=0.0000459
+Individual allele frequencies estimated (50).	RMSE=0.0000452
+Individual allele frequencies estimated (51).	RMSE=0.0000445
+Individual allele frequencies estimated (52).	RMSE=0.0000439
+Individual allele frequencies estimated (53).	RMSE=0.0000432
+Individual allele frequencies estimated (54).	RMSE=0.0000426
+Individual allele frequencies estimated (55).	RMSE=0.0000420
+Individual allele frequencies estimated (56).	RMSE=0.0000414
+Individual allele frequencies estimated (57).	RMSE=0.0000408
+Individual allele frequencies estimated (58).	RMSE=0.0000402
+Individual allele frequencies estimated (59).	RMSE=0.0000396
+Individual allele frequencies estimated (60).	RMSE=0.0000390
+Individual allele frequencies estimated (61).	RMSE=0.0000384
+Individual allele frequencies estimated (62).	RMSE=0.0000378
+Individual allele frequencies estimated (63).	RMSE=0.0000373
+Individual allele frequencies estimated (64).	RMSE=0.0000368
+Individual allele frequencies estimated (65).	RMSE=0.0000362
+Individual allele frequencies estimated (66).	RMSE=0.0000357
+Individual allele frequencies estimated (67).	RMSE=0.0000352
+Individual allele frequencies estimated (68).	RMSE=0.0000347
+Individual allele frequencies estimated (69).	RMSE=0.0000342
+Individual allele frequencies estimated (70).	RMSE=0.0000337
+Individual allele frequencies estimated (71).	RMSE=0.0000332
+Individual allele frequencies estimated (72).	RMSE=0.0000327
+Individual allele frequencies estimated (73).	RMSE=0.0000323
+Individual allele frequencies estimated (74).	RMSE=0.0000318
+Individual allele frequencies estimated (75).	RMSE=0.0000313
+Individual allele frequencies estimated (76).	RMSE=0.0000309
+Individual allele frequencies estimated (77).	RMSE=0.0000304
+Individual allele frequencies estimated (78).	RMSE=0.0000300
+Individual allele frequencies estimated (79).	RMSE=0.0000295
+Individual allele frequencies estimated (80).	RMSE=0.0000291
+Individual allele frequencies estimated (81).	RMSE=0.0000286
+Individual allele frequencies estimated (82).	RMSE=0.0000282
+Individual allele frequencies estimated (83).	RMSE=0.0000278
+Individual allele frequencies estimated (84).	RMSE=0.0000274
+Individual allele frequencies estimated (85).	RMSE=0.0000270
+Individual allele frequencies estimated (86).	RMSE=0.0000266
+Individual allele frequencies estimated (87).	RMSE=0.0000262
+Individual allele frequencies estimated (88).	RMSE=0.0000259
+Individual allele frequencies estimated (89).	RMSE=0.0000255
+Individual allele frequencies estimated (90).	RMSE=0.0000251
+Individual allele frequencies estimated (91).	RMSE=0.0000248
+Individual allele frequencies estimated (92).	RMSE=0.0000244
+Individual allele frequencies estimated (93).	RMSE=0.0000240
+Individual allele frequencies estimated (94).	RMSE=0.0000237
+Individual allele frequencies estimated (95).	RMSE=0.0000233
+Individual allele frequencies estimated (96).	RMSE=0.0000230
+Individual allele frequencies estimated (97).	RMSE=0.0000226
+Individual allele frequencies estimated (98).	RMSE=0.0000223
+Individual allele frequencies estimated (99).	RMSE=0.0000220
+Individual allele frequencies estimated (100).	RMSE=0.0000217
+Individual allele frequencies estimated (101).	RMSE=0.0000213
+PCAngsd did not converge!
+Saved covariance matrix as /users/n/m/nmphelan/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1/allRS_poly_K2.cov
+
+Estimating admixture proportions using NMF (CSG-MU).
+K=2, Alpha=0.0, Batches=10, Seed=0
+CSG-MU (1).	RMSE=0.215148342
+CSG-MU (2).	RMSE=0.160332419
+CSG-MU (3).	RMSE=0.133290105
+CSG-MU (4).	RMSE=0.045234826
+CSG-MU (5).	RMSE=0.020272451
+CSG-MU (6).	RMSE=0.010394449
+CSG-MU (7).	RMSE=0.007303648
+CSG-MU (8).	RMSE=0.004127226
+CSG-MU (9).	RMSE=0.002557279
+CSG-MU (10).	RMSE=0.001674579
+CSG-MU (11).	RMSE=0.001125919
+CSG-MU (12).	RMSE=0.000752669
+CSG-MU (13).	RMSE=0.000532107
+CSG-MU (14).	RMSE=0.000378259
+CSG-MU (15).	RMSE=0.000273905
+CSG-MU (16).	RMSE=0.000204357
+CSG-MU (17).	RMSE=0.000153090
+CSG-MU (18).	RMSE=0.000114134
+CSG-MU (19).	RMSE=0.000090531
+CSG-MU (20).	RMSE=0.000067573
+CSG-MU (21).	RMSE=0.000055394
+CSG-MU (22).	RMSE=0.000043441
+CSG-MU (23).	RMSE=0.000033848
+CSG-MU (24).	RMSE=0.000028644
+CSG-MU (25).	RMSE=0.000022905
+CSG-MU (26).	RMSE=0.000018051
+CSG-MU (27).	RMSE=0.000014315
+CSG-MU (28).	RMSE=0.000012969
+CSG-MU (29).	RMSE=0.000011368
+CSG-MU (30).	RMSE=0.000008740
+Converged.
+Frobenius error: 45.36552
+Log-likelihood: -41762322.22569
+Saved admixture proportions as /users/n/m/nmphelan/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1/allRS_poly_K2.admix.2.Q
+Saved ancestral allele frequencies proportions as /users/n/m/nmphelan/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1/allRS_poly_K2.admix.2.P
+
+Total elapsed time: 2m12s
