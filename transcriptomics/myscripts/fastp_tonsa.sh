@@ -57,7 +57,7 @@ MYSAMP="C2R"
 # the wildcard here * allows for the different reps to be captured in the list
 # start a loop with this file as the input:
 
-for READ1 in ${MYSAMP}*_1.fq.gz
+for READ1 in ${MYSAMP}*1.fq.gz
 do
 
 # the partner to this file (read 2) can be found by replacing the _1.fq.gz with _2.fq.gz
