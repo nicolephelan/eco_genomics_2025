@@ -17,12 +17,233 @@ library(ggplot2)
 library(ggpubr)
 ```
 
-Estimate the PCA
+Estimate the PCA for each of the K values
 
 ```{r}
-COV <- as.matrix(read.table("allRS_poly_K2.cov"))
+# K=2
+COV_K2 <- as.matrix(read.table("allRS_poly_K2.cov"))
+PCA_K2 <- eigen(COV_K2)
 
-PCA <- eigen(COV)
+# K=3
+COV_K3 <- as.matrix(read.table("allRS_poly_K3.cov"))
+PCA_K3 <- eigen(COV_K3)
 
-PCA
+# K=4
+COV_K4 <- as.matrix(read.table("allRS_poly_K4.cov"))
+PCA_K4 <- eigen(COV_K4)
+
+# K=5
+COV_K5 <- as.matrix(read.table("allRS_poly_K5.cov"))
+PCA_K5 <- eigen(COV_K5)
+```
+
+How much variance do the first 3 eigenvalues/PC axes explain?
+
+```{r}
+#K=2
+var_K2 <- round(PCA_K2$values/sum(PCA_K2$values),3)
+print(c("The first 3 eigenvalues for K=2 explain the following variance:",var_K2[1:3]))
+
+#K=3
+var_K3 <- round(PCA_K3$values/sum(PCA_K3$values),3)
+print(c("The first 3 eigenvalues for K=3 explain the following variance:",var_K3[1:3]))
+
+#K=4
+var_K4 <- round(PCA_K4$values/sum(PCA_K4$values),3)
+print(c("The first 3 eigenvalues for K=4 explain the following variance:",var_K4[1:3]))
+
+#K=5
+var_K5 <- round(PCA_K5$values/sum(PCA_K5$values),3)
+print(c("The first 3 eigenvalues for K=5 explain the following variance:",var_K5[1:3]))
+```
+
+Screeplots for the variance explained for each K value
+
+```{r}
+#K=2
+barplot(var_K2, 
+        xlab="Eigenvalues of the PCA", 
+        ylab="Proportion of variance explained",
+        main="K=2")
+#K=3
+barplot(var_K3, 
+        xlab="Eigenvalues of the PCA", 
+        ylab="Proportion of variance explained",
+        main="K=3")
+
+#K=4
+barplot(var_K4, 
+        xlab="Eigenvalues of the PCA", 
+        ylab="Proportion of variance explained",
+        main="K=4")
+
+#K=5
+barplot(var_K5, 
+        xlab="Eigenvalues of the PCA", 
+        ylab="Proportion of variance explained",
+        main="K=5")
+```
+
+As you can see from the first three eigenvalues and the screeplots, the drop in variance explained occurs rapidly between PC1 and PC2 when K=2, but it drops more gradually as K increases.
+
+Data wrangling that takes in the names of my samples and makes them into a tidy format for plotting
+
+```{r}
+names <- read.table("allRS_bam.list")
+names <- unlist(strsplit(basename(as.character(names[,1])), split = ".sorted.rmdup.bam"))
+split = strsplit(names, "_")
+pops <- data.frame(names[1:95], do.call(rbind, split[1:95]))
+names(pops) = c("Ind", "Pop", "Row", "Col")
+
+#K=2
+data_K2=as.data.frame(PCA_K2$vectors)
+data_K2=data_K2[,c(1:3)]
+data_K2= cbind(data_K2, pops)
+
+#K=3
+data_K3=as.data.frame(PCA_K3$vectors)
+data_K3=data_K3[,c(1:3)]
+data_K3= cbind(data_K3, pops)
+
+#K=4
+data_K4=as.data.frame(PCA_K4$vectors)
+data_K4=data_K4[,c(1:3)]
+data_K4= cbind(data_K4, pops)
+
+#K=5
+data_K5=as.data.frame(PCA_K5$vectors)
+data_K5=data_K5[,c(1:3)]
+data_K5= cbind(data_K5, pops)
+```
+
+Plotting all of the PCAs in ggplot for the different K values for PC1 and PC2
+
+```{r}
+#K=2
+ggscatter(data_K2, x = "V1", y = "V2",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=2") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K2[1]*100,"%)"), y = paste0("PC2: (",var_K2[2]*100,"%)"))
+
+#K=3
+ggscatter(data_K3, x = "V1", y = "V2",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=3") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K3[1]*100,"%)"), y = paste0("PC2: (",var_K3[2]*100,"%)"))
+
+#K=4
+ggscatter(data_K4, x = "V1", y = "V2",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=4") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K4[1]*100,"%)"), y = paste0("PC2: (",var_K4[2]*100,"%)"))
+
+#K=5
+ggscatter(data_K5, x = "V1", y = "V2",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=5") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K5[1]*100,"%)"), y = paste0("PC2: (",var_K5[2]*100,"%)"))
+```
+Generally, all of the PCAs showed similar spreads of the variance, however the PCA for K=2 looked like a flipped version of the PCAs for K=3, K=4, and K=5.
+
+Let's try repeating the PCA but with the 3rd PC axis this time.
+
+```{r}
+#K=2
+ggscatter(data_K2, x = "V1", y = "V3",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=2") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K2[1]*100,"%)"), y = paste0("PC3: (",var_K2[3]*100,"%)"))
+
+#K=3
+ggscatter(data_K3, x = "V1", y = "V3",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=3") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K3[1]*100,"%)"), y = paste0("PC3: (",var_K3[3]*100,"%)"))
+
+#K=4
+ggscatter(data_K4, x = "V1", y = "V3",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=4") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K4[1]*100,"%)"), y = paste0("PC3: (",var_K4[3]*100,"%)"))
+
+#K=5
+ggscatter(data_K5, x = "V1", y = "V3",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=5") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K5[1]*100,"%)"), y = paste0("PC3: (",var_K5[3]*100,"%)"))
+```
+This time, K=4 produces the PCA that looks like a flipped version of the rest of the PCAs.
+
+Moving onto the admixture analysis, I will start by reading in all of the data.
+
+```{r}
+## rank order the samples according to population code
+ord<-order(pops[,2])
+
+#K=2
+q_K2 <- read.table("allRS_poly_K2.admix.2.Q", sep=" ", header=F)
+K_2=dim(q_K2)[2] #Find the level of K modeled
+
+#K=3
+q_K3 <- read.table("allRS_poly_K3.admix.3.Q", sep=" ", header=F)
+K_3=dim(q_K3)[2] #Find the level of K modeled
+## rank order the samples according to population code
+
+#K=4
+q_K4 <- read.table("allRS_poly_K4.admix.4.Q", sep=" ", header=F)
+K_4=dim(q_K4)[2] #Find the level of K modeled
+## rank order the samples according to population code
+
+#K=5
+q_K5 <- read.table("allRS_poly_K5.admix.5.Q", sep=" ", header=F)
+K_5=dim(q_K5)[2] #Find the level of K modeled
+## rank order the samples according to population code
+```
+
+Plotting the admixture proportions for all of the K values
+
+```{r}
+#K=2
+barplot(t(q_K2)[,ord],
+        #col=cols[1:K],
+        col=c("red","black"),
+        space=0,border=NA,
+        xlab="Populations",ylab="Admixture proportions",
+        main=paste0("Red Spruce-Black Spruce Admixture: K=",K_2))
+text(tapply(1:nrow(pops),pops[ord,2],mean),-0.05,unique(pops[ord,2]),xpd=T,cex=0.75,srt=45)
+abline(v=cumsum(sapply(unique(pops[ord,2]),function(x){sum(pops[ord,2]==x)})),col=1,lwd=1.2)
+
+#K=3
+barplot(t(q_K3)[,ord],
+        #col=cols[1:K],
+        col=c("red","black","gold"),
+        space=0,border=NA,
+        xlab="Populations",ylab="Admixture proportions",
+        main=paste0("Red Spruce-Black Spruce Admixture: K=",K_3))
+text(tapply(1:nrow(pops),pops[ord,2],mean),-0.05,unique(pops[ord,2]),xpd=T,cex=0.75,srt=45)
+abline(v=cumsum(sapply(unique(pops[ord,2]),function(x){sum(pops[ord,2]==x)})),col=1,lwd=1.2)
 ```

@@ -108,7 +108,7 @@ to
 
     -   Generally, admixture with black spruce seemed to increase with latitude (with the exception of Population 2021).
 
-# 09/30/2025: Manipulating K Values
+### 09/30/2025: Manipulating K Values
 
 -   I modified the PCAngsd_RSBS.sh script to change the K value from 2 to 3. I also updated the PCA_Admixture.Rmd file and knitted a new html.
 
@@ -122,10 +122,13 @@ to
 
     -   After making the scree plot, I noticed that the variance explained in PC1 was much lower compared to the PCA with black spruce.
 
-# 10/05/2025: Homework 1 Option B
+### 10/05/2025: Homework 1 Option B running the bash script
 
 -   I created a new bash script called Homework1_OptionB.sh where I copied the script from PCAngsd_RSBS.sh and modified it for this project. This script can be found following the path `~/projects/eco_genomics_2025/population_genomics/myscripts`
     -   In these edits, I created a new directory for saving my outputs found at the following path `~/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1`
     -   I also modified the script to only include the red spruce data and not the black spruce data.
-    - I added all of the K values as different comments in this script, and I commented each K value out except for the one I was running as I ran it.
+    -   I added all of the K values as different comments in this script, and I commented each K value out except for the one I was running as I ran it.
     
+### 10/07/2025: Homework 1 Option B assessing the results
+
+-   I created an R markdown called Homework1_OptionB.Rmd in `~/projects/eco_genomics_2025/population_genomics/mydocs`
