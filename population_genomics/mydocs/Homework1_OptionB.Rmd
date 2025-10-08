@@ -246,4 +246,25 @@ barplot(t(q_K3)[,ord],
         main=paste0("Red Spruce-Black Spruce Admixture: K=",K_3))
 text(tapply(1:nrow(pops),pops[ord,2],mean),-0.05,unique(pops[ord,2]),xpd=T,cex=0.75,srt=45)
 abline(v=cumsum(sapply(unique(pops[ord,2]),function(x){sum(pops[ord,2]==x)})),col=1,lwd=1.2)
+
+#K=4
+barplot(t(q_K4)[,ord],
+        #col=cols[1:K],
+        col=c("red","black","gold","turquoise"),
+        space=0,border=NA,
+        xlab="Populations",ylab="Admixture proportions",
+        main=paste0("Red Spruce-Black Spruce Admixture: K=",K_4))
+text(tapply(1:nrow(pops),pops[ord,2],mean),-0.05,unique(pops[ord,2]),xpd=T,cex=0.75,srt=45)
+abline(v=cumsum(sapply(unique(pops[ord,2]),function(x){sum(pops[ord,2]==x)})),col=1,lwd=1.2)
+
+#K=5
+barplot(t(q_K5)[,ord],
+        #col=cols[1:K],
+        col=c("red","black","gold","turquoise","violet"),
+        space=0,border=NA,
+        xlab="Populations",ylab="Admixture proportions",
+        main=paste0("Red Spruce-Black Spruce Admixture: K=",K_5))
+text(tapply(1:nrow(pops),pops[ord,2],mean),-0.05,unique(pops[ord,2]),xpd=T,cex=0.75,srt=45)
+abline(v=cumsum(sapply(unique(pops[ord,2]),function(x){sum(pops[ord,2]==x)})),col=1,lwd=1.2)
+
 ```
