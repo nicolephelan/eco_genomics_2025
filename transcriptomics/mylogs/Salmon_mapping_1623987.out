@@ -658,3 +658,26 @@ hits: 24,566,195, hits per frag:  0.847875
 [2025-10-09 17:15:29.424] [jointLog] [info] Marked 0 weighted equivalence classes as degenerate
 [2025-10-09 17:15:29.428] [jointLog] [info] iteration = 0 | max rel diff. = 7410.43
 [2025-10-09 17:15:29.461] [jointLog] [info] iteration 11, adjusting effective lengths to account for biases
+[2025-10-09 17:15:42.659] [jointLog] [info] Computed expected counts (for bias correction)
+[2025-10-09 17:15:42.659] [jointLog] [info] processed bias for 0.1% of the transcripts
+[2025-10-09 17:15:42.772] [jointLog] [info] processed bias for 10.0% of the transcripts
+[2025-10-09 17:15:43.240] [jointLog] [info] processed bias for 20.0% of the transcripts
+[2025-10-09 17:15:44.117] [jointLog] [info] processed bias for 30.0% of the transcripts
+[2025-10-09 17:15:44.925] [jointLog] [info] processed bias for 40.0% of the transcripts
+[2025-10-09 17:15:45.819] [jointLog] [info] processed bias for 50.0% of the transcripts
+[2025-10-09 17:15:46.371] [jointLog] [info] processed bias for 60.1% of the transcripts
+[2025-10-09 17:15:47.160] [jointLog] [info] processed bias for 70.0% of the transcripts
+[2025-10-09 17:15:48.097] [jointLog] [info] processed bias for 80.0% of the transcripts
+[2025-10-09 17:15:48.817] [jointLog] [info] processed bias for 90.0% of the transcripts
+[2025-10-09 17:15:49.656] [jointLog] [info] processed bias for 100.0% of the transcripts
+[2025-10-09 17:15:49.662] [jointLog] [info] processed bias for 100.0% of the transcripts
+[2025-10-09 17:15:49.955] [jointLog] [info] iteration = 100 | max rel diff. = 4.3792
+[2025-10-09 17:15:50.277] [jointLog] [info] iteration = 200 | max rel diff. = 0.498171
+[2025-10-09 17:15:50.598] [jointLog] [info] iteration = 300 | max rel diff. = 0.274237
+[2025-10-09 17:15:50.919] [jointLog] [info] iteration = 400 | max rel diff. = 0.0859882
+[2025-10-09 17:15:51.214] [jointLog] [info] iteration = 493 | max rel diff. = 0.00678351
+[2025-10-09 17:15:51.218] [jointLog] [info] Finished optimizer
+[2025-10-09 17:15:51.218] [jointLog] [info] writing output 
+
+Sample C2R2_S158_L007 done
+Salmon quantification completed at: Thu Oct  9 05:15:51 PM EDT 2025
