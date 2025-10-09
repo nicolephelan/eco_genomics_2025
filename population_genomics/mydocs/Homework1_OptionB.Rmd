@@ -42,19 +42,19 @@ How much variance do the first 3 eigenvalues/PC axes explain?
 ```{r}
 #K=2
 var_K2 <- round(PCA_K2$values/sum(PCA_K2$values),3)
-print(c("The first 3 eigenvalues for K=2 explain the following variance:",var_K2[1:3]))
+print(c("The first 4 eigenvalues for K=2 explain the following variance:",var_K2[1:4]))
 
 #K=3
 var_K3 <- round(PCA_K3$values/sum(PCA_K3$values),3)
-print(c("The first 3 eigenvalues for K=3 explain the following variance:",var_K3[1:3]))
+print(c("The first 4 eigenvalues for K=3 explain the following variance:",var_K3[1:4]))
 
 #K=4
 var_K4 <- round(PCA_K4$values/sum(PCA_K4$values),3)
-print(c("The first 3 eigenvalues for K=4 explain the following variance:",var_K4[1:3]))
+print(c("The first 4 eigenvalues for K=4 explain the following variance:",var_K4[1:4]))
 
 #K=5
 var_K5 <- round(PCA_K5$values/sum(PCA_K5$values),3)
-print(c("The first 3 eigenvalues for K=5 explain the following variance:",var_K5[1:3]))
+print(c("The first 4 eigenvalues for K=5 explain the following variance:",var_K5[1:4]))
 ```
 
 Screeplots for the variance explained for each K value
@@ -91,6 +91,7 @@ As you can see from the first three eigenvalues and the screeplots, the drop in 
 Data wrangling that takes in the names of my samples and makes them into a tidy format for plotting
 
 ```{r}
+
 names <- read.table("allRS_bam.list")
 names <- unlist(strsplit(basename(as.character(names[,1])), split = ".sorted.rmdup.bam"))
 split = strsplit(names, "_")
@@ -199,6 +200,90 @@ ggscatter(data_K5, x = "V1", y = "V3",
   labs(x = paste0("PC1: (",var_K5[1]*100,"%)"), y = paste0("PC3: (",var_K5[3]*100,"%)"))
 ```
 This time, K=4 produces the PCA that looks like a flipped version of the rest of the PCAs.
+
+Generating a figure for the write-up
+```{r}
+#K=2
+K2P1P2=ggscatter(data_K2, x = "V1", y = "V2",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="K=2") + 
+  theme_bw(base_size = 13, base_family = "Times") +
+  guides(color = "none") +
+  labs(x = paste0("PC1: (",var_K2[1]*100,"%)"), y = paste0("PC2: (",var_K2[2]*100,"%)"))
+
+#K=3
+K3P1P2=ggscatter(data_K3, x = "V1", y = "V2",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="K=3") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  guides(color = "none") +
+  labs(x = paste0("PC1: (",var_K3[1]*100,"%)"), y = paste0("PC2: (",var_K3[2]*100,"%)"))
+
+#K=4
+K4P1P2=ggscatter(data_K4, x = "V1", y = "V2",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=4") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K4[1]*100,"%)"), y = paste0("PC2: (",var_K4[2]*100,"%)"))
+
+#K=5
+K5P1P2=ggscatter(data_K5, x = "V1", y = "V2",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=5") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K5[1]*100,"%)"), y = paste0("PC2: (",var_K5[2]*100,"%)"))
+
+#K=2
+K2P1P3=ggscatter(data_K2, x = "V1", y = "V3",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=2") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K2[1]*100,"%)"), y = paste0("PC3: (",var_K2[3]*100,"%)"))
+
+#K=3
+K3P1P3=ggscatter(data_K3, x = "V1", y = "V3",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="Red spruce genetic PCA when K=3") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  labs(x = paste0("PC1: (",var_K3[1]*100,"%)"), y = paste0("PC3: (",var_K3[3]*100,"%)"))
+
+#K=4
+K4P1P3=ggscatter(data_K4, x = "V1", y = "V3",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="K=4") +
+  theme_bw(base_size = 13, base_family = "Times") +
+  guides(color = "none") +
+  labs(x = paste0("PC1: (",var_K4[1]*100,"%)"), y = paste0("PC3: (",var_K4[3]*100,"%)"))
+
+#K=5
+K5P1P3=ggscatter(data_K5, x = "V1", y = "V3",
+          color = "Pop",
+          mean.point = TRUE,
+          star.plot = TRUE,
+          main="K=5") +
+  theme_bw(base_size = 13, base_family = "Times") + 
+  guides(color = "none") +
+  labs(x = paste0("PC1: (",var_K5[1]*100,"%)"), y = paste0("PC3: (",var_K5[3]*100,"%)"))
+
+ggarrange(K2P1P2, K3P1P2, 
+          #K4P1P2, K5P1P2, K2P1P3, K3P1P3, 
+          K4P1P3, K5P1P3, ncol = 2, nrow = 2)
+
+```
 
 Moving onto the admixture analysis, I will start by reading in all of the data.
 
