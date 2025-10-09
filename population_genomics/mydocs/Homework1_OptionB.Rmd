@@ -60,6 +60,8 @@ print(c("The first 3 eigenvalues for K=5 explain the following variance:",var_K5
 Screeplots for the variance explained for each K value
 
 ```{r}
+par(mfrow=c(2,2))
+
 #K=2
 barplot(var_K2, 
         xlab="Eigenvalues of the PCA", 
@@ -227,13 +229,15 @@ K_5=dim(q_K5)[2] #Find the level of K modeled
 Plotting the admixture proportions for all of the K values
 
 ```{r}
+par(mfrow=c(2,2))
+
 #K=2
 barplot(t(q_K2)[,ord],
         #col=cols[1:K],
         col=c("red","black"),
         space=0,border=NA,
         xlab="Populations",ylab="Admixture proportions",
-        main=paste0("Red Spruce-Black Spruce Admixture: K=",K_2))
+        main=paste0("Red Spruce Admixture: K=",K_2))
 text(tapply(1:nrow(pops),pops[ord,2],mean),-0.05,unique(pops[ord,2]),xpd=T,cex=0.75,srt=45)
 abline(v=cumsum(sapply(unique(pops[ord,2]),function(x){sum(pops[ord,2]==x)})),col=1,lwd=1.2)
 
@@ -243,7 +247,7 @@ barplot(t(q_K3)[,ord],
         col=c("red","black","gold"),
         space=0,border=NA,
         xlab="Populations",ylab="Admixture proportions",
-        main=paste0("Red Spruce-Black Spruce Admixture: K=",K_3))
+        main=paste0("Red Spruce Admixture: K=",K_3))
 text(tapply(1:nrow(pops),pops[ord,2],mean),-0.05,unique(pops[ord,2]),xpd=T,cex=0.75,srt=45)
 abline(v=cumsum(sapply(unique(pops[ord,2]),function(x){sum(pops[ord,2]==x)})),col=1,lwd=1.2)
 
@@ -253,7 +257,7 @@ barplot(t(q_K4)[,ord],
         col=c("red","black","gold","turquoise"),
         space=0,border=NA,
         xlab="Populations",ylab="Admixture proportions",
-        main=paste0("Red Spruce-Black Spruce Admixture: K=",K_4))
+        main=paste0("Red Spruce Admixture: K=",K_4))
 text(tapply(1:nrow(pops),pops[ord,2],mean),-0.05,unique(pops[ord,2]),xpd=T,cex=0.75,srt=45)
 abline(v=cumsum(sapply(unique(pops[ord,2]),function(x){sum(pops[ord,2]==x)})),col=1,lwd=1.2)
 
@@ -263,8 +267,12 @@ barplot(t(q_K5)[,ord],
         col=c("red","black","gold","turquoise","violet"),
         space=0,border=NA,
         xlab="Populations",ylab="Admixture proportions",
-        main=paste0("Red Spruce-Black Spruce Admixture: K=",K_5))
+        main=paste0("Red Spruce Admixture: K=",K_5))
 text(tapply(1:nrow(pops),pops[ord,2],mean),-0.05,unique(pops[ord,2]),xpd=T,cex=0.75,srt=45)
 abline(v=cumsum(sapply(unique(pops[ord,2]),function(x){sum(pops[ord,2]==x)})),col=1,lwd=1.2)
 
 ```
+```{r}
+
+```
+

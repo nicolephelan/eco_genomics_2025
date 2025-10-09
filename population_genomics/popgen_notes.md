@@ -128,7 +128,12 @@ to
     -   In these edits, I created a new directory for saving my outputs found at the following path `~/projects/eco_genomics_2025/population_genomics/myresults/ANGSD/PCA_ADMIX/Homework1`
     -   I also modified the script to only include the red spruce data and not the black spruce data.
     -   I added all of the K values as different comments in this script, and I commented each K value out except for the one I was running as I ran it.
-    
+
 ### 10/07/2025: Homework 1 Option B assessing the results
 
 -   I created an R markdown called Homework1_OptionB.Rmd in `~/projects/eco_genomics_2025/population_genomics/mydocs`
+
+    -   In this markdown file, I generated screeplots of the variance explained for each of the K values, and I plotted the PCAs with PC1 against PC2 AND PC1 against PC3.
+    -   Generally the PCAs did not differ to greatly between the K values (see markdown file for further explanation).
+    -   In addition to generating PCAs, I generated 4 admixture bar plots for each of the K values.
+    -   I also visited the log files for each K value in the `mylogs` folder to extract the log likelihood and Frobenius error for subsequent analysis.
