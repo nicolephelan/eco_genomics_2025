@@ -21,3 +21,10 @@ This is a place for me to keep my notes on my electronic/server activities durin
     -   I edited the file to set my population to C2 and set my directory to my repository.
 
 -   I copied the salmon_quant.sh script to `myscripts` similarly and I ran it in sbatch.
+
+### 10/14/2025 
+
+-   I reviewed the mapping rates and saw they were generally between 35% and 45%.
+    -   I saved this to a txt file called mapping_rate.txt in `myresults` folder.
+    -   It's possible low counts were the result of algal/microbe contamination or different clades of copepods.
+    
