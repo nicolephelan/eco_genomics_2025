@@ -27,4 +27,6 @@ This is a place for me to keep my notes on my electronic/server activities durin
 -   I reviewed the mapping rates and saw they were generally between 35% and 45%.
     -   I saved this to a txt file called mapping_rate.txt in `myresults` folder.
     -   It's possible low counts were the result of algal/microbe contamination or different clades of copepods.
-    
+-   I copied the txt files for the count_matrix.txt and metadata.txt into `mydata`
+-   I prepped the quant.sf files to be imported into DESeq2
+-   I analyzed the DESeq2 results in an Rmd file called DESeq2_notes.Rmd in `mydocs`
