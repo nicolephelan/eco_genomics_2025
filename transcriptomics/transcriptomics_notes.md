@@ -33,6 +33,18 @@ This is a place for me to keep my notes on my electronic/server activities durin
 
 ### 10/16/2025 PCA Analysis and Other Visualization
 
-- Continuing in the DESeq2 analysis, I generated PCAs of the control vs. treatment data.
+-   Continuing in the DESeq2 analysis, I generated two PCAs of the control vs. treatment data.
+-   I then played around with plotting individual genes to see if the significant DEGs matched the contrast in the PCA.
 
-### 10/21/2025
+### 10/21/2025 Continuation of DESeq2 Analysis Markdown
+
+-   After struggling to open the DESeq2_notes.Rmd file, I learned that I need to wait ~2–5 minutes after opening it to use it in R Studio.
+-   Once I had gotten my R Markdown file open, I started by creating an MA plot which showed the relationship between log fold change (LFC) and the magnitude of expression.
+-   I made a Volcano plot of the LFC against the adjusted p-value for to identify which genes in the first generation where differentially expressed significantly.
+    -   The significant genes were colored in red and blue.
+-   I made a heat map of the 20 most significant genes and sorted them according to their p-values.
+-   I then made a heat map showing just the significant genes from generation 1 and how they changed across generations.
+    -   I saw from my results that there seemed to be an oscillation in up regulation and down regulation of the significant DEGs from generation 1 across each successive generation.
+- Finally, I made a Euler plot for the first three generations.
+    -   Generation 2 had the most unique DEGs between the control and treatment groups.
+    -   It is possible this occurred because there were only 2 replicates for the control in generation 2.
