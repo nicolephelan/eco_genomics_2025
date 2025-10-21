@@ -22,7 +22,7 @@ This is a place for me to keep my notes on my electronic/server activities durin
 
 -   I copied the salmon_quant.sh script to `myscripts` similarly and I ran it in sbatch.
 
-### 10/14/2025 
+### 10/14/2025 Starting the DESeq2 Analysis
 
 -   I reviewed the mapping rates and saw they were generally between 35% and 45%.
     -   I saved this to a txt file called mapping_rate.txt in `myresults` folder.
@@ -30,3 +30,9 @@ This is a place for me to keep my notes on my electronic/server activities durin
 -   I copied the txt files for the count_matrix.txt and metadata.txt into `mydata`
 -   I prepped the quant.sf files to be imported into DESeq2
 -   I analyzed the DESeq2 results in an Rmd file called DESeq2_notes.Rmd in `mydocs`
+
+### 10/16/2025 PCA Analysis and Other Visualization
+
+- Continuing in the DESeq2 analysis, I generated PCAs of the control vs. treatment data.
+
+### 10/21/2025
