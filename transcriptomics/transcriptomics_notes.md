@@ -48,3 +48,9 @@ This is a place for me to keep my notes on my electronic/server activities durin
 - Finally, I made a Euler plot for the first three generations.
     -   Generation 2 had the most unique DEGs between the control and treatment groups.
     -   It is possible this occurred because there were only 2 replicates for the control in generation 2.
+    
+### 10/23/2025 Running the GO Analysis
+
+- I created a new R Markdown File in `mydocs` called DESeq2ToTopGO.Rmd for analyzing the GO data.
+    -   I created plots of the adjusted p-value and Wald statistic using ggplot2.
+- Using TopGo, I generated a plot of the significantly enriched genes in the transcriptome of generation 2.
