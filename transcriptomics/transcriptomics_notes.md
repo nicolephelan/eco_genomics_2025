@@ -54,3 +54,11 @@ This is a place for me to keep my notes on my electronic/server activities durin
 - I created a new R Markdown File in `mydocs` called DESeq2ToTopGO.Rmd for analyzing the GO data.
     -   I created plots of the adjusted p-value and Wald statistic using ggplot2.
 - Using TopGo, I generated a plot of the significantly enriched genes in the transcriptome of generation 2.
+
+### 10/28/2025 Weighted Gene Correlation Network Analysis (WGCNA)
+
+- I created a new R Markdown File in `mydocs` called DESeq2ToWGCNA.Rmd for conducting the WGCNA analysis.
+- I copied the WGCNA_TraitData.csv file to `mydata` from the shared class repository at `/gpfs1/cl/ecogen/pbio6800/Transcriptomics/enrichment`.
+- I explored the mean connectivity and R^2 of various beta values and chose to use the beta value of 18.
+    -   The midnightblue module had the highest degree of correlation.
+    -   I also did a REVIGO analysis of the midnightblue data.
