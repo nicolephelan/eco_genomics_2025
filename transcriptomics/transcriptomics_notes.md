@@ -62,3 +62,5 @@ This is a place for me to keep my notes on my electronic/server activities durin
 - I explored the mean connectivity and R^2 of various beta values and chose to use the beta value of 18.
     -   The midnightblue module had the highest degree of correlation.
     -   I also did a REVIGO analysis of the midnightblue data.
+    
+### 11/6/2025 Homework 2

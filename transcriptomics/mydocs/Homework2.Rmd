@@ -1,0 +1,178 @@
+---
+title: "Homework2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "/users/n/m/nmphelan/projects/eco_genomics_2025/transcriptomics/mydata")
+```
+
+Importing the R libraries
+
+```{r}
+library(DESeq2)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+library(ggpubr)
+library(vsn)  
+library("pheatmap")
+library("vsn")
+```
+
+Importing the data
+
+```{r}
+# Import the counts matrix
+countsTable <- read.table("counts_matrix.txt", header=TRUE, row.names=1)
+head(countsTable)
+dim(countsTable)
+
+countsTableRound <- round(countsTable) # bc DESeq2 doesn't like decimals (and Salmon outputs data with decimals)
+head(countsTableRound)
+
+#import the sample description table
+conds <- read.delim("metadata.txt", header=TRUE, stringsAsFactors = TRUE, row.names=1)
+head(conds)
+```
+
+Running DESeq2 without the interaction term
+
+```{r}
+####################################################
+
+### Start working with DESeq2!
+
+####################################################
+
+
+#Correct column names
+colnames(countsTableRound) <- substr(colnames(countsTableRound),
+                                     start = 1, stop = 4)
+#### Create a DESeq object and define the experimental design here with the tilda
+dds <- DESeqDataSetFromMatrix(countData = countsTableRound, colData=conds, 
+                              design= ~ generation + line)
+
+dim(dds)
+
+# Filter out genes with too few reads - remove all genes with counts < 15 in more than 75% of 24 samples, so 18)
+## suggested by WGCNA on RNAseq FAQ
+
+dds <- dds[rowSums(counts(dds) >= 15) >= 18,]
+nrow(dds) 
+# How many transcripts have at least 15 reads (a.k.a counts) in 75% of the samples
+
+# Run the DESeq model to test for differential gene expression
+dds <- DESeq(dds)
+
+# List the results you've generated
+resultsNames(dds)
+# Copy the results names 
+```
+Running DESeq2 with the interaction term
+
+```{r}
+#### Create a DESeq object and define the experimental design here with the tilda
+dds_interaction <- DESeqDataSetFromMatrix(countData = countsTableRound, colData=conds, 
+                              design= ~ generation + line + generation:line)
+
+dim(dds_interaction)
+
+# Filter out genes with too few reads - remove all genes with counts < 15 in more than 75% of 24 samples, so 18)
+## suggested by WGCNA on RNAseq FAQ
+
+dds_interaction <- dds_interaction[rowSums(counts(dds) >= 15) >= 18,]
+nrow(dds_interaction) 
+# How many transcripts have at least 15 reads (a.k.a counts) in 75% of the samples
+
+# Run the DESeq model to test for differential gene expression
+dds_interaction <- DESeq(dds_interaction)
+
+# List the results you've generated
+resultsNames(dds_interaction)
+# Copy the results names 
+```
+Generating PCAs for data without interaction term
+
+```{r}
+# first transform the data for plotting using variance stabilization
+vsd <- vst(dds, blind=FALSE)
+
+pcaData <- plotPCA(vsd, intgroup=c("line","generation"), returnData=TRUE)
+percentVar <- round(100 * attr(pcaData,"percentVar"))
+
+ggplot(pcaData, aes(PC1, PC2, color=line, shape=generation)) +
+  geom_point(size=3) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) + 
+  coord_fixed()
+```
+
+Another way of visualizing the PCA data
+(alpha value and shape is for generation; blue is control & red is treatment)
+
+```{r}
+p1=ggplot(pcaData, aes(PC1, PC2)) +
+  geom_point(size=5, stroke = 1, aes(fill=line, shape=generation)) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) +
+  scale_shape_manual(values=c(21,22,23,24), labels = c("G1", "G2","G3", "G4"))+
+  #scale_shape_manual(values=c(21,22,23,24) -> circle, square, diamond, triangle
+  scale_fill_manual(values=c('#6699CC',"#CC3333"), labels = c("Control", "Treatment"))+
+  scale_alpha_manual(values = c(1.0, 0.8, 0.7, 0.3), guide = "none") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(panel.border = element_rect(color = "black", fill = NA, size = 3))+
+  theme(text = element_text(size = 20)) +
+  theme(legend.title = element_blank())
+```
+
+PCAs for DESeq2 with the interaction term
+
+```{r}
+# first transform the data for plotting using variance stabilization
+vsd <- vst(dds_interaction, blind=FALSE)
+
+pcaData <- plotPCA(vsd, intgroup=c("line","generation"), returnData=TRUE)
+percentVar <- round(100 * attr(pcaData,"percentVar"))
+
+ggplot(pcaData, aes(PC1, PC2, color=line, shape=generation)) +
+  geom_point(size=3) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) + 
+  coord_fixed()
+```
+
+Another way of visualizing the PCA data
+(alpha value and shape is for generation; blue is control & red is treatment)
+
+```{r}
+p2=ggplot(pcaData, aes(PC1, PC2)) +
+  geom_point(aes(fill = line, shape = generation),
+             size = 5, stroke = 1, color = "black", show.legend = TRUE) +
+  xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+  ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+  scale_shape_manual(values = c(21, 22, 23, 24), labels = c("G1", "G2", "G3", "G4")) +
+  scale_fill_manual(values = c('#6699CC', '#CC3333'), labels = c("Control", "Treatment")) +
+  guides(
+    fill = guide_legend(override.aes = list(shape = 21, color = "black", alpha = 1))
+  ) +
+  theme_bw() +
+  theme(
+    panel.border = element_rect(color = "black", fill = NA, size = 3),
+    text = element_text(size = 20),
+    legend.title = element_blank()
+  )
+```
+
+Making the double panel plot
+
+```{r}
+par(mfrow=c(2,1))
+
+p1
+p2
+```
+
