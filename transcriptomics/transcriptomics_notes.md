@@ -67,3 +67,5 @@ This is a place for me to keep my notes on my electronic/server activities durin
 
 - I created an R markdown file in `mydocs` called Homework2.Rmd and this is where I started running DESeq2 again with and without the interaction term generation:line.
 - For my first figure, I created a PCA of both DESeq2 runs separated by generation and line.
+- For my second figure, I generated scatter plots of specific highly significant genes for both the interaction and non-interaction run of DESeq2.
+- For my third figure, I made a Euler plot comparing the DEGs between treatments for each generation that compared the DESeq2 run with and without the interaction term.

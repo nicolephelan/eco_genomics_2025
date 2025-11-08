@@ -351,3 +351,198 @@ annotate_figure(Fig2,
                 left = "TRINITY_DN139369_c0_g5_i1                   TRINITY_DN93941_c0_g3_i1")
 ggsave("Fig2.jpeg", width = 14, height = 8)
 ```
+
+Setting up the data for the Euler Plots without interactions
+
+```{r}
+#Gen1
+resG1_CvT <- results(dds, contrast=c("group","controlG1","treatmentG1"), alpha = 0.05)
+resG1_CvT <- resG1_CvT[order(resG1_CvT$padj),] #sort
+head(resG1_CvT)
+summary(resG1_CvT)
+
+resG1_CvT <- resG1_CvT[!is.na(resG1_CvT$padj),]
+degs_G1_CvTM <- row.names(resG1_CvT[resG1_CvT$padj < 0.05,])
+```
+
+```{r}
+#Gen2
+resG2_CvT <- results(dds, contrast=c("group","controlG2","treatmentG2"), alpha = 0.05)
+resG2_CvT <- resG2_CvT[order(resG2_CvT$padj),] #sort
+head(resG2_CvT)
+summary(resG2_CvT)
+
+resG2_CvT <- resG2_CvT[!is.na(resG2_CvT$padj),]
+degs_G2_CvTM <- row.names(resG2_CvT[resG2_CvT$padj < 0.05,])
+```
+
+```{r}
+#Gen3
+resG3_CvT <- results(dds, contrast=c("group","controlG3","treatmentG3"), alpha = 0.05)
+resG3_CvT <- resG3_CvT[order(resG3_CvT$padj),] #sort
+head(resG3_CvT)
+summary(resG3_CvT)
+
+resG3_CvT <- resG3_CvT[!is.na(resG3_CvT$padj),]
+degs_G3_CvTM <- row.names(resG3_CvT[resG3_CvT$padj < 0.05,])
+```
+
+```{r}
+#Gen4
+resG4_CvT <- results(dds, contrast=c("group","controlG4","treatmentG4"), alpha = 0.05)
+resG4_CvT <- resG4_CvT[order(resG4_CvT$padj),] #sort
+head(resG4_CvT)
+summary(resG4_CvT)
+
+resG4_CvT <- resG4_CvT[!is.na(resG4_CvT$padj),]
+degs_G4_CvTM <- row.names(resG4_CvT[resG4_CvT$padj < 0.05,])
+```
+
+Setting up the data for the DESeq2 run with the interactions
+
+```{r}
+#Gen1
+resG1_CvT_int <- results(dds_interaction, contrast=c("group","controlG1","treatmentG1"), alpha = 0.05)
+resG1_CvT_int <- resG1_CvT_int[order(resG1_CvT_int$padj),] #sort
+head(resG1_CvT_int)
+summary(resG1_CvT_int)
+
+resG1_CvT_int <- resG1_CvT_int[!is.na(resG1_CvT_int$padj),]
+degs_G1_CvTM_int <- row.names(resG1_CvT_int[resG1_CvT_int$padj < 0.05,])
+```
+
+```{r}
+#Gen2
+resG2_CvT_int <- results(dds_interaction, contrast=c("group","controlG2","treatmentG2"), alpha = 0.05)
+resG2_CvT_int <- resG2_CvT_int[order(resG2_CvT_int$padj),] #sort
+head(resG2_CvT_int)
+summary(resG2_CvT_int)
+
+resG2_CvT_int <- resG2_CvT_int[!is.na(resG2_CvT_int$padj),]
+degs_G2_CvTM_int <- row.names(resG2_CvT_int[resG2_CvT_int$padj < 0.05,])
+```
+
+```{r}
+#Gen3
+resG3_CvT_int <- results(dds_interaction, contrast=c("group","controlG3","treatmentG3"), alpha = 0.05)
+resG3_CvT_int <- resG3_CvT_int[order(resG3_CvT_int$padj),] #sort
+head(resG3_CvT_int)
+summary(resG3_CvT_int)
+
+resG3_CvT_int <- resG3_CvT_int[!is.na(resG3_CvT_int$padj),]
+degs_G3_CvTM_int <- row.names(resG3_CvT_int[resG3_CvT_int$padj < 0.05,])
+```
+
+```{r}
+#Gen4
+resG4_CvT_int <- results(dds_interaction, contrast=c("group","controlG4","treatmentG4"), alpha = 0.05)
+resG4_CvT_int <- resG4_CvT_int[order(resG4_CvT_int$padj),] #sort
+head(resG4_CvT_int)
+summary(resG4_CvT_int)
+
+resG4_CvT_int <- resG4_CvT_int[!is.na(resG4_CvT_int$padj),]
+degs_G4_CvTM_int <- row.names(resG4_CvT_int[resG4_CvT_int$padj < 0.05,])
+```
+
+Constructing the Euler plots
+
+```{r}
+library(eulerr)
+
+# Total
+length(degs_G1_CvTM)  # 573 DEGs
+length(degs_G2_CvTM)  # 4568 DEGs
+length(degs_G3_CvTM)  # 1234 DEGs
+length(degs_G4_CvTM)  # 40 DEGs
+
+# Total
+length(degs_G1_CvTM_int)  # 471 DEGs
+length(degs_G2_CvTM_int)  # 6525 DEGs
+length(degs_G3_CvTM_int)  # 1351 DEGs
+length(degs_G4_CvTM_int)  # 128 DEGs
+
+# Intersections
+length(intersect(degs_G1_CvTM,degs_G1_CvTM_int))  # 331 DEGs
+length(intersect(degs_G2_CvTM,degs_G2_CvTM_int))  # 3779 DEGs
+length(intersect(degs_G3_CvTM,degs_G3_CvTM_int))  # 749 DEGs
+length(intersect(degs_G4_CvTM,degs_G4_CvTM_int))  # 34 DEGs
+
+# Number unique
+
+573-331 #  G1 = 242
+471-331 #  G1_int = 140
+
+4568-3779 #  G2 = 789
+6525-3779 #  G2_int = 2746
+
+1234-749 #  G3 = 485
+1351-749 #  G3_int = 602
+
+40-34 #  G4 = 6
+128-34 #  G4 = 94
+
+# Generation 1
+fit1 <- euler(c("G1 Without Interaction" = 242, "G1 With Interaction" = 140, "G1 Without Interaction&G1 With Interaction" = 331))
+
+# Generation 2
+fit2 <- euler(c("G2 Without Interaction" = 789, "G2 With Interaction" = 2746, "G2 Without Interaction&G2 With Interaction" = 3779))
+
+# Generation 3
+fit3 <- euler(c("G3 Without Interaction" = 485, "G3 With Interaction" = 602, "G3 Without Interaction&G3 With Interaction" = 749))
+
+# Generation 4
+fit4 <- euler(c("G4 Without Interaction" = 6, "G4 With Interaction" = 94, "G4 Without Interaction&G4 With Interaction" = 34))
+
+plot(fit1, quantities = TRUE, fill = c("#c6abe0","#ffe599"),
+     alpha=0.5,
+     labels = list(font = 2))
+
+plot(fit2, quantities = TRUE, fill = c("#c6abe0","#ffe599"),
+     alpha=0.5,
+     labels = list(font = 2))
+
+plot(fit3, quantities = TRUE, fill = c("#c6abe0","#ffe599"),
+     alpha=0.5,
+     labels = list(font = 2))
+
+plot(fit4, quantities = TRUE, fill = c("#c6abe0","#ffe599"),
+     alpha=0.5,
+     labels = list(font = 2))
+
+```
+
+Making the multipanel figure
+
+```{r}
+# for arranging the plots
+library(gridExtra)
+
+grid.arrange(
+  plot(fit1, quantities = TRUE, fill = c("#c6abe0","#ffe599"),
+     alpha=0.5,
+     labels = list(font = 2)),
+  plot(fit2, quantities = TRUE, fill = c("#c6abe0","#ffe599"),
+     alpha=0.5,
+     labels = list(font = 2)),
+  plot(fit3, quantities = TRUE, fill = c("#c6abe0","#ffe599"),
+     alpha=0.5,
+     labels = list(font = 2)),
+  plot(fit4, quantities = TRUE, fill = c("#c6abe0","#ffe599"),
+     alpha=0.5,
+     labels = list(font = 2)),
+  nrow=2
+)
+```
+
+Another way of combining the Venns that compares generations by size
+
+```{r}
+fit <- euler(c("G1" = 242, "G1i" = 140, "G1&G1i" = 331,"G2" = 789, "G2i" = 2746, "G2&G2i" = 3779,"G3" = 485, "G3i" = 602, "G3&G3i" = 749,"G4" = 6, "G4i" = 94, "G4&G4i" = 34))
+
+jpeg("Fig3.jpeg", width = 6, height = 5, units = 'in', res = 300)
+
+plot(fit, quantities = TRUE, fill = c("#c6abe0","#ffe599","#c6abe0","#ffe599","#c6abe0","#ffe599","#c6abe0","#ffe599"),
+     alpha=0.5,
+     labels = list(font = 2))
+```
+
