@@ -1,0 +1,24 @@
+---
+title: "Group Project"
+author: "Nicole Phelan"
+date: "2025-11-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir="~/projects/eco_genomics_2025/group_project/myresults/")
+```
+
+Install essential libraries
+```{r}
+library(vegan)
+library(geodata)
+```
+
+
+Accessing the WorldClim data
+```{r}
+bioclim_data <- worldclim_country(country="US", var="bio", res=10)
+```
+
