@@ -37,4 +37,22 @@ climate_values <- climate_values[, -1]
 
 # Combining the climate data with the geographical data points/elevation
 pointsFiltered <- cbind(pointsFiltered,climate_values)
+# Renumbers each row by 1
+rownames(pointsFiltered) <- NULL
+# Changing the World Clim column names
+names(pointsFiltered) <- gsub(".*bio_([0-9]+).*", "BIO\\1", names(pointsFiltered))
 
+# creating a regular dataframe without the geometry points
+RemoveGeo <- st_drop_geometry(pointsFiltered)
+
+library(corrplot)
+corrplot(cor(RemoveGeo[,3:21]))
+
+# Generating a PCA of the WorldClim variables and elevation
+
+library(factoextra)
+pca<-prcomp(RemoveGeo[,3:21], center = TRUE, scale. = TRUE)
+group <- c(rep("Temperature", 11), rep("Precipitation", 8))
+fviz_pca_var(pca, col.var = group, 
+             palette = c("steelblue", "maroon"), 
+             repel = TRUE)

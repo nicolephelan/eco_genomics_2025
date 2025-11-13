@@ -11,3 +11,5 @@
 -   In order to execute the function install.packages("geodata"), the Rstudio session needed to be run using Rgeospatial/4.5.1.
 -   An R script was created called RDA_Analysis.R in `~projects/eco_genomics_2025/group_project/myscripts`.
 -   Using the 'geodata' package in R, a dataframe was generated for each of the exome-capture red spruce population coordinates, elevations, and WorldClim data
+
+### 11/13/2025 Creating the PCA of the WorldClim Data
